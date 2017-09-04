@@ -96,8 +96,8 @@ function celebrate(body, res, callback) {
             //console.log(obj);
             if (obj[0]) {
                 if (obj[0].count % 1000 === 0 || /^(?=\d{4,})(\d)\1*$/.test(obj[0].count)) {
-                    postMessage(indGifs[Math.floor(Math.random() * indGifs.length)]);
-                    postMessage("It's time to Celebrate! " + body.name + " has reached " + obj[0].count + " messages!!!!");
+                    postMessageCountess(indGifs[Math.floor(Math.random() * indGifs.length)]);
+                    postMessageCountess("It's time to Celebrate! " + body.name + " has reached " + obj[0].count + " messages!!!!");
                 }
             }
         });
@@ -116,7 +116,7 @@ function respond(body, res) {
     if (body.text && messageRegex[0].test(body.text)) {
         res.writeHead(200);
         const params = messageRegex[0].exec(body.text);
-        console.log(params);
+        // console.log(params);
         let endDateQ = params[3] === undefined ? 0 : params[3] === '' ? 0 : 1;
         userName = params[1] === undefined ? "%" : params[1] === '' ? "%" : params[1];
         startDate = params[2] === undefined ? "00000000" : params[2] === '' ? "00000000" : params[2];
@@ -218,7 +218,7 @@ function getCount(userName, startDate, queryText, endDate, endDateQ, postMessage
         });
         res.on('end', function () {
             var obj = JSON.parse(output);
-            console.log(obj);
+            // console.log(obj);
             if (obj[0].length === 0) {
                 postMessage("User \"" + userName + "\" not found.");
             }
