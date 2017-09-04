@@ -346,7 +346,10 @@ function populateCounts(memberList, likes, last_id) {
         setTimeout(() => {
           // console.log(i);
           insertDB("likes", likes.slice(i * 100, i * 100 + 100));
-          if (i + 1 >= len / 100) console.log("Database updated.");
+          if (i + 1 >= len / 100) {
+            console.log("Database updated.");
+            postMessage("Database counts updated.");
+          }
         }, i * 500);
     
       }
@@ -403,7 +406,10 @@ function populateCounts(memberList, likes, last_id) {
           setTimeout(() => {
             // console.log(i);
             insertDB("likes", likes.slice(i * 100, i * 100 + 100));
-            if (i + 1 >= len / 100) console.log("Database updated.");
+            if (i + 1 >= len / 100) {
+            console.log("Database updated.");
+            postMessage("Database counts updated.");
+          }
           }, i * 500);
 
         }
