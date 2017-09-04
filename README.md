@@ -1,6 +1,6 @@
 # CountBot
 
-<a href="https://🍞🔪.ws"><img src="https://upload.wikimedia.org/wikipedia/en/2/29/Count_von_Count_kneeling.png" align="left" hspace="2" vspace="2"></a>
+<a href="https://🍞🔪.ws"><img width=50px src="https://upload.wikimedia.org/wikipedia/en/2/29/Count_von_Count_kneeling.png" align="left" hspace="2" vspace="2"></a>
 
 **Count Bot** is a GroupMe bot designed to keep track of the message count in a group and respond to user's count requests.
 
