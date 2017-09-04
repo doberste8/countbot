@@ -1,3 +1,5 @@
 node_modules/*
 server/.env
+client/app/environment.ts
 client/dist/environment.js
+sql/*
