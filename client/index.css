@@ -1,0 +1,7 @@
+html { font-size: calc(.5em + 1vw); }
+
+body {
+  font-size: 1em;
+  padding: 50px 0;
+  background: #e3e6e8;
+}

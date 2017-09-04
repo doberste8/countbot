@@ -1,0 +1,30 @@
+<div id="containerAppRoot">
+  <div class="jumbotron">
+    <h1 class="text-center">Welcome to Bread Knife!</h1>
+  </div>
+  <div class="row">
+    <input [(ngModel)]="startDate" (change)="updateLikeMatrix()">
+    <input [(ngModel)]="endDate" (change)="updateLikeMatrix()">
+  </div>
+  <div class="row">
+    <table>
+      <tr *ngFor="let row of data2">
+        <td *ngFor="let cell of row">
+          {{cell}}
+        </td>
+      </tr>
+    </table>
+    <!--<div class="col-sm-4">-->
+    <!--  <h1 class="text-center">Like Matrix Unsorted</h1>-->
+    <!--<p type="button"(click)="Existing()">toggle</p>-->
+    <!--<p>{{sort}}</p>-->
+    <!--<p>{{data2}}</p>-->
+    <!--  <chord-diagram *ngIf="data2" id="chart1" [data]="data2" [sort]="sort">Loading...</chord-diagram>-->
+    <!--  <chord-diagram *ngIf="data1" id="chart3" [data]="data1" [sort]="sort">Loading...</chord-diagram>-->
+    <!--</div>-->
+    <!--<div class="col-sm-8">-->
+    <!--  <h1 class="text-center">Like Matrix Sorted</h1>-->
+    <!--  <chord-diagram *ngIf="data2" id="chart2" [data]="data2" sort=1>Loading...</chord-diagram>-->
+    <!--</div>-->
+  </div>
+</div>

@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700');
+
+div {
+        position: relative;
+}
+
+.titles {
+	font-family: 'Ubuntu', sans-serif;
+	font-weight: bold;
+	fill: #454c54;
+}
+
+#tooltip {
+        color: white;
+        font-family: 'Ubuntu', sans-serif;
+        font-weight: normal;
+        font-size: calc(.25em + .75vw);
+        opacity: 0;
+        background: #243342;
+        padding: 5px;
+        border: 1px solid lightgrey;
+        border-radius: 5px;
+        position: absolute;
+        z-index: 10;
+        visibility: hidden;
+        white-space: nowrap;
+        pointer-events: none;
+      }
