@@ -37,7 +37,7 @@ If the username cannot be found Count Bot will respond with:
 User "User1" not found.
 ```
 
-All messages broken down by user **(Note that "ALL" is a special case username that will return a message for every user that has posted messages fitting the other parameters in descending order.)**:
+All messages broken down by user **(Note that "ALL" is a special case username that will return a message count for every user that has posted messages fitting the other parameters in descending order.)**:
 ```
 #.ALL
 
