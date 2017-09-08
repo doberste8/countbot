@@ -111,7 +111,7 @@ function celebrate(body, res, callback) {
 
     res.on('end', function() {
       let obj = JSON.parse(output);
-      console.log(obj);
+      // console.log(obj);
       if (obj[1]) {
         if (obj[1][0].count % 1000 === 0 || /^(?=\d{4,})(\d)\1*$/.test(obj[1][0].count)) {
           postMessageCountess(indGifs[Math.floor(Math.random() * indGifs.length)]);

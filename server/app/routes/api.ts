@@ -45,7 +45,7 @@ api.route('/messages/count')
         if (req.query.end_date) endDate = req.query.end_date;
         if (req.query.query_text) queryText = req.query.query_text;
         if (req.query.user_id) userId = req.query.user_id;
-        console.log('Server-side: ', userName, startDate, endDate, queryText, userId);
+        // console.log('Server-side: ', userName, startDate, endDate, queryText, userId);
         messages.getCount(userName, startDate, endDate, queryText, userId, res);
     });
 
