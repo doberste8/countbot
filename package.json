@@ -1,6 +1,6 @@
 {
   "name": "CountBot",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Count Bot",
   "main": "server/server.js",
   "scripts": {

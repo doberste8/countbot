@@ -39,13 +39,14 @@ api.route('/messages/count')
         let startDate = '00000000';
         let endDate = new Date().toISOString();
         let queryText = '%';
-        // let userId = '%';
+        let userId = '%';
         if (req.query.user_name) userName = req.query.user_name;
         if (req.query.start_date) startDate = req.query.start_date;
         if (req.query.end_date) endDate = req.query.end_date;
         if (req.query.query_text) queryText = req.query.query_text;
-        // if (req.query.user_id) userId = req.query.user_id;
-        messages.getCount(userName, startDate, endDate, queryText, res);
+        if (req.query.user_id) userId = req.query.user_id;
+        console.log('Server-side: ', userName, startDate, endDate, queryText, userId);
+        messages.getCount(userName, startDate, endDate, queryText, userId, res);
     });
 
 api.route('/users')

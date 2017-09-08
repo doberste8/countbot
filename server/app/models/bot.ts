@@ -111,11 +111,11 @@ function celebrate(body, res, callback) {
 
     res.on('end', function() {
       let obj = JSON.parse(output);
-      //console.log(obj);
-      if (obj[0]) {
-        if (obj[0].count % 1000 === 0 || /^(?=\d{4,})(\d)\1*$/.test(obj[0].count)) {
+      console.log(obj);
+      if (obj[1]) {
+        if (obj[1][0].count % 1000 === 0 || /^(?=\d{4,})(\d)\1*$/.test(obj[1][0].count)) {
           postMessageCountess(indGifs[Math.floor(Math.random() * indGifs.length)]);
-          postMessageCountess("It's time to Celebrate! " + body.name + " has reached " + obj[0].count + " messages!!!!");
+          postMessageCountess("It's time to Celebrate! " + body.name + " has reached " + obj[1][0].count + " messages!!!!");
         }
       }
     });
@@ -134,7 +134,7 @@ function respond(body, res) {
   //console.log(body.text);
   //console.log(body.sender_id);
 
-  var messageRegex = [/#(?:\.([^.\n]*))?(?:\.([^.\n]*))?(?:\.([^.\n]*))?(?:\.([^.\n]*))?/, /^Refresh_DB$/];
+  var messageRegex = [/^#(?:\.([^.\n]*))?(?:\.([^.\n]*))?(?:\.([^.\n]*))?(?:\.([^\n]*))?/, /^Refresh_DB$/];
   let userName, startDate, queryText, endDate;
 
   if (body.text && messageRegex[0].test(body.text)) {
@@ -146,8 +146,8 @@ function respond(body, res) {
     startDate = params[2] === undefined ? "00000000" : params[2] === '' ? "00000000" : params[2];
     queryText = params[4] === undefined ? "%" : params[4] === '' ? "%" : params[4];
     endDate = params[3] === undefined ? new Date().toISOString() : params[3] === '' ? new Date().toISOString() : params[3];
-    console.log(userName, startDate, queryText, endDate);
-    getCount(userName, startDate, queryText, endDate, endDateQ, postMessage);
+    console.log(userName, startDate, endDate, queryText);
+    getCount(userName, startDate, endDate, queryText, endDateQ, postMessage);
     res.end();
   }
   else if (body.text && messageRegex[1].test(body.text)) {
@@ -234,12 +234,12 @@ function postMessageCountess(botResponse) {
   botReq.end(JSON.stringify(body));
 }
 
-function getCount(userName, startDate, queryText, endDate, endDateQ, postMessage) {
+function getCount(userName, startDate, endDate, queryText, endDateQ, postMessage) {
   var options, Req;
   options = {
     hostname: process.env.HOST_NAME,
     port: process.env.PORT,
-    path: '/api/messages/count' + '?user_name=' + encodeURIComponent(userName) + '&start_date=' + encodeURIComponent(startDate) + '&query_text=' + encodeURIComponent(queryText) + '&end_date=' + encodeURIComponent(endDate),
+    path: '/api/messages/count' + '?user_name=' + encodeURIComponent(userName) + '&start_date=' + encodeURIComponent(startDate) + '&end_date=' + encodeURIComponent(endDate) + '&query_text=' + encodeURIComponent(queryText),
     method: 'GET',
     headers: {
       'Content-Type': 'application/json'
@@ -369,7 +369,7 @@ function populateCounts(memberList, likes, last_id) {
       var msgsLength = msgs.length;
       if (msgsLength > 0) {
         for (var i = 0; i < msgsLength; i++) {
-            if (msgs[i].user_id === "system" || msgs[i].name === "GroupMe Calendar") { msgs[i].user_id = 1; msgs[i].name = "system"; }
+            if (msgs[i].user_id === "system" || msgs[i].name === "GroupMe Calendar") { msgs[i].user_id = 1; msgs[i].name = "GroupMe"; }
             // msgs[i].id = parseInt(msgs[i].id, 10);
             // msgs[i].user_id = parseInt(msgs[i].user_id, 10);
             let index = memberList.findIndex(item => item[0] === msgs[i].user_id);

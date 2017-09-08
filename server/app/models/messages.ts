@@ -28,11 +28,13 @@ function messages() {
     };
 
     //get count of messages, filtered by user_id, date range, and containing message text if specified.
-    this.getCount = function(userName, startDate, endDate, queryText, res) {
+    this.getCount = function(userName, startDate, endDate, queryText, userId, res) {
+        queryText = queryText.replace(/\'/,"''"); //expand support for all mysql escape sequences needed
+        console.log(queryText);
         db.acquire(function(err, con) {
             if (err) throw err; // You *MUST* handle err and not continue execution if
             // there is an error. this is a standard part of Node.js
-            con.query('CALL GetCounts(?,?,?,?)', [userName, startDate, endDate, queryText],
+            con.query('CALL GetCounts(?,?,?,?,?)', [userName, startDate, endDate, queryText, userId],
                 function(err, result) {
                     con.release();
                     if (err) {
