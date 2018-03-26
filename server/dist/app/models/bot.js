@@ -111,7 +111,7 @@ function celebrate(body, res, callback) {
 function respond(body, res) {
     //console.log(body.text);
     //console.log(body.sender_id);
-    var messageRegex = [/^#(?:\.([^.\n]*))?(?:\.([^.\n]*))?(?:\.([^.\n]*))?(?:\.([^\n]*))?/, /^Refresh_DB$/];
+    var messageRegex = [/^#(?:\.([^.\n]*))?(?:\.([^.\n]*))?(?:\.([^.\n]*))?(?:\.([^\n]*))?/, /^Refresh_DB$/, /^Help$/i];
     let userName, startDate, queryText, endDate;
     if (body.text && messageRegex[0].test(body.text)) {
         res.writeHead(200);
@@ -131,6 +131,12 @@ function respond(body, res) {
         console.log("Updating member count database...");
         postMessage("Updating database counts...");
         populateCounts([], [], 0);
+        res.end();
+    }
+    else if (body.text && messageRegex[2].test(body.text)) {
+        res.writeHead(200);
+        // console.log("Updating member count database...");
+        postMessage("https://github.com/doberste8/countbot#countbot");
         res.end();
     }
     else {
