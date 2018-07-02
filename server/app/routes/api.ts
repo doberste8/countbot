@@ -9,6 +9,8 @@ import * as users from '../models/users';
 // middleware for all api requests
 api.use(function(req, res, next) {
     // console.log('API');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 

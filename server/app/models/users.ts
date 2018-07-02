@@ -10,7 +10,7 @@ function users() {
             if (err) throw err; // You *MUST* handle err and not continue execution if
             // there is an error. this is a standard part of Node.js
             con.query('select * from users where id like ? and name like ?', [id, name],
-                function(err, result) {
+                function(err, result, fields) {
                     con.release();
                     if (err) {
                         // throw err;
@@ -21,7 +21,8 @@ function users() {
                             error: err
                         });
                     } else {
-                        res.send(result);
+                        res.setHeader('Content-Type', 'application/json');
+                        res.json({"status":200, "error": null, "results": result});
                     }
                 });
         });
